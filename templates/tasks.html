@@ -1,0 +1,35 @@
+<!-- ...existing code... -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+</head>
+<body style="background-color: aqua;">
+    <h2 style="text-align: center; color: white; background-color: black; padding: 10px;">List of Tasks</h2>
+    <table border="1" style="width: 50%; margin: auto; background-color: black; color: white; text-align: center;">
+      <tr>
+        <th>Task</th>
+        <th>Action</th>
+      </tr>
+      {% for row in data %}
+      <tr>
+        <td>{{ row['task'] }}</td>
+        <td>
+          <form method="post" action="{{ url_for('delete', task_id=row['id']) }}" style="display:inline;">
+            <button type="submit" onclick="return confirm('Delete this task?')">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="2">No tasks yet.</td></tr>
+      {% endfor %}
+    </table>
+    <br/>
+    <div style="text-align: center; background-color: blueviolet; margin-left: 30%; margin-right: 30%; padding: 10px; border-radius: 5px;">
+        <a href="/" style="color: black; text-decoration: none; font-size: 20px;">Home</a>
+    </div>
+</body>
+</html>
+<!-- ...existing code... -->
